@@ -15,7 +15,7 @@ function Filter() {
       ...searchParams,
       ...values
     };
-    // getList(params);
+    getList(params);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -30,14 +30,14 @@ function Filter() {
     });
   };
 
-  const getList = () => {
-    fetch("/getList", {
-      method: "GET",
+  const getList = (params) => {
+    fetch("/api/test", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-      // body: JSON.stringify(params),
+      body: JSON.stringify(params),
     })
       .then((response) => response.json())
       .then((res) => {
@@ -52,7 +52,7 @@ function Filter() {
           },
         });
       });
-  }
+  };
 
   return (
     <Form
