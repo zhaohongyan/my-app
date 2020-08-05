@@ -1,27 +1,23 @@
-const db = {
-  errCode: 0,
-  success: true,
-  message: "请求成功",
-  data: {
-    column: {
-      name: "姓名",
-      age: "年龄",
-      sex: "性别",
-    },
-    total: 1,
-    list: [
-      {
-        id: 1,
-        name: "Emma",
-        age: 30,
-        sex: "女",
-      },
-    ],
-  },
-};
+// 不可以使用es6
+const fs = require('fs');
+const path = require('path');
 
-const proxy = { 
-  "POST /api/test": db
-};
+const mockDir = path.join(__dirname)
+const mock = {};
 
-module.exports = proxy;
+function readFileSync(dir, isRoot) {
+  const files = fs.readdirSync(dir);
+  files.forEach(file => {
+    const info = fs.statSync(`${dir}/${file}`)
+    if (info.isDirectory()) {
+      readFileSync(`${dir}/${file}`, false);
+    } else {
+      if (!(isRoot && file === 'index.js')) {
+        Object.assign(mock, require(`${dir}/${file}`))
+      }
+    }
+  })
+}
+
+readFileSync(mockDir, true);
+module.exports = mock;

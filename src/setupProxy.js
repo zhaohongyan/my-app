@@ -8,6 +8,7 @@ module.exports = app => {
     createProxyMiddleware({
       target,
       changeOrigin: true,
+      changeHost: true,
     })
   );
 }

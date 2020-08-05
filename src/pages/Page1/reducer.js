@@ -1,4 +1,4 @@
-const nameSpace = 'page1';
+export const nameSpace = 'page1';
 
 const initialState = {
   searchParams: {
@@ -13,11 +13,12 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case `${nameSpace}/changeSearch`:
+      console.log('changeSearch')
       return {
         ...state,
         searchParams: Object.assign(state.searchParams, action.payload),
       };
-      break;
+      
     case `${nameSpace}/setList`:
       const { column, list, total } = action.payload;
       return {
@@ -29,6 +30,5 @@ export default function (state = initialState, action) {
 
     default:
       return initialState;
-      break;
   }
 }

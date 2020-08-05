@@ -1,8 +1,9 @@
-import React from 'react'
-import { Form, Input, Select, Button } from 'antd';
+import React from "react";
+import { Form, Input, Select, Button } from "antd";
 import { useStore, useDispatch, useSelector } from "react-redux";
-
-import request from '../../../common/request';
+import { nameSpace } from "../reducer";
+import request from "../../../common/request";
+import { GET_LIST, GET_USER } from "../../../common/api";
 
 function Filter() {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ function Filter() {
     console.log("Success:", values);
     const params = {
       ...searchParams,
-      ...values
+      ...values,
     };
     getList(params);
   };
@@ -25,33 +26,25 @@ function Filter() {
   const onValuesChange = (changedValues, allValues) => {
     console.log("onValuesChange", changedValues, allValues);
     dispatch({
-      type: "page1/changeSearch",
+      type: `${nameSpace}/changeSearch`,
       payload: allValues,
     });
   };
 
   const getList = (params) => {
-    fetch("/api/test", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify(params),
-    })
-      .then((response) => response.json())
-      .then((res) => {
-        const { data } = res;
-        console.log(data);
+    request(GET_LIST, "POST", params).then((res) => {
+      const { data, success } = res;
+      if (success && data) {
         dispatch({
-          type: "page1/setList",
+          type: `${nameSpace}/setList`,
           payload: {
             list: data.list,
             column: data.column,
             total: data.total,
           },
         });
-      });
+      } 
+    });
   };
 
   return (
