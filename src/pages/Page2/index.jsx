@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
 import { Input, Button, Divider } from 'antd';
+import { uniqueId } from 'lodash'
 import { useStore, useDispatch, useSelector } from "react-redux";
 // import { addTodo } from "./actions";
 
@@ -7,15 +8,20 @@ import { useStore, useDispatch, useSelector } from "react-redux";
 function Page2 () {
   const dispatch = useDispatch();
 
+  // state 有两个变量
   const [count, setCount] = useState(0);
-  let [inputValue, changeInput] = useState('');
+  const [inputValue, changeInput] = useState('');
 
-  function change (e) {
-    console.log(e.target.value)
+  const change = (e) => {
     changeInput(e.target.value);
   }  
 
-  function add () {
+  // 只有inputvalue改变的时候才会执行
+  useEffect(() => {
+    console.log('input value change')
+  }, [inputValue]);
+
+  const add = () => {
     dispatch({ 
       type: 'addTodo', 
       payload: inputValue 
@@ -25,7 +31,6 @@ function Page2 () {
   
   const store = useSelector((state) => state.Page2Reducers);
   const list = store.list;
-  console.log("list", store.list);
 
   // const store = useStore();
   // const allData = store.getState();
@@ -33,11 +38,13 @@ function Page2 () {
 
   return (
     <div>
+      <h1>useState</h1>
       <span>You clicked {count} times</span>
       <Button onClick={() => setCount(count + 1)}>Click me</Button>
 
       <Divider />
 
+      <h1>useState useEffect</h1>
       <Input
         placeholder="请输入"
         style={{ width: 200 }}
@@ -47,8 +54,8 @@ function Page2 () {
       <Button onClick={() => add()}>add</Button>
 
       <ul>
-        {list.map(item => {
-          return <li>{item}</li>
+        {list.map((item, index) => {
+          return <li key={uniqueId("li_")}>{item}</li>;
         })}
       </ul>
     </div>

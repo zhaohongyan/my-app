@@ -3,18 +3,18 @@ const initialState = {
   list: [1, 2, 3]
 };
 
-export default function (state = initialState, action) {
+function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'addTodo':
+    case "addTodo":
       const v = action.payload;
       return {
         ...state,
         list: [...state.list, v],
       };
-      break;
 
     default:
       return initialState;
-      break;
   }
 }
+
+export default reducer;
