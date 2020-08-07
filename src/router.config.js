@@ -1,14 +1,15 @@
-
 // import Root from './App.js';
-import Page1 from './pages/Page1';
-import Page1Edit from './pages/Page1/Edit';
-import Page2 from './pages/Page2';
-import Page3 from './pages/Page3';
+import Page1 from "./pages/Page1";
+import Page1Edit from "./pages/Page1/Edit";
+import Page2 from "./pages/Page2";
+import Page3 from "./pages/Page3";
 import Page4 from "./pages/Page4";
+import Page5 from "./pages/Page5/index.tsx";
 
-const routes = [
+export const routes = [
   {
     path: "/page1",
+    title: "Page1",
     component: Page1,
     routes: [
       {
@@ -23,42 +24,32 @@ const routes = [
   },
   {
     path: "/page2",
+    title: "Page2",
     component: Page2,
   },
   {
     path: "/page3",
+    title: "Page3",
     component: Page3,
   },
   {
     path: "/page4",
-    exact: true,
+    title: "Page4",
     component: Page4,
   },
-  // {
-  //   path: "/",
-  //   component: Root,
-  //   exact: false,
-  //   routes: [
-  //     {
-  //       path: "/child/:id",
-  //       component: Child,
-  //       routes: [
-  //         {
-  //           path: "/child/:id/grand-child",
-  //           component: GrandChild,
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
+  {
+    path: "/page5",
+    title: "Page5",
+    component: Page5,
+  },
 ];
 
 // renderRoutes只渲染一层，需要展开所有路由
 // 递归展开所有路由
-function flattenDeep(routes){
+function flattenDeep(routes) {
   const result = [];
   flatten(routes);
-  function flatten (routes) {
+  function flatten(routes) {
     routes.forEach((route) => {
       if (route.routes && route.routes.length > 0) {
         flatten(route.routes);
@@ -69,6 +60,5 @@ function flattenDeep(routes){
 
   return result;
 }
-
 
 export default flattenDeep(routes);

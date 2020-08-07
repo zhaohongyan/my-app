@@ -11,3 +11,5 @@ create-react-app脚手架搭建步骤
 * yarn add axios
 * yarn add mockjs
 * yarn add lodash
+
+* yarn add typescript @types/node @types/react @types/react-dom @types/jest

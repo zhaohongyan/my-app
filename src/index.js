@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-// import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { renderRoutes } from "react-router-config";
-import { BrowserRouter as Router, NavLink } from "react-router-dom";
-import routes from './router.config';
-
-import { Provider } from 'react-redux';
-import { createStore } from "redux";
 import { Divider } from "antd";
 
+import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import { renderRoutes } from "react-router-config";
+
+import { createStore } from "redux";
+import { Provider } from 'react-redux';
+
+// import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+import routes from './router.config';
+import { routes as firstRoutes } from './router.config';
+
 import rootReducer from "./reducers";
+
+import './index.css';
+
 const store = createStore(rootReducer);
 
 ReactDOM.render(
@@ -21,10 +27,9 @@ ReactDOM.render(
       <div style={{ padding: "0 20px" }}>
         <h1>Hello Emma!</h1>
         <nav>
-          <NavLink to="/page1">Page1</NavLink>
-          <NavLink to="/page2">Page2</NavLink>
-          <NavLink to="/page3">Page3</NavLink>
-          <NavLink to="/page4">Page4</NavLink>
+          {firstRoutes.map((item) => (
+            <NavLink to={item.path}>{item.title}</NavLink>
+          ))}
         </nav>
         <Divider />
 

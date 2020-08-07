@@ -9,9 +9,13 @@
 1. Filter ✅
 2. Table ✅
 
+# 支持ts
+
 # 打包
-1. 更改包名
+1. 更改包名 ✅
+### config/paths.js 更改 appBuild
 
-# ts
-
+# 启动静态服务器 ✅
+`yarn global add serve`
+`serve -s build`
 
