@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Input, Button, Divider } from 'antd';
+import { Space, Input, Button, Divider } from "antd";
 import { uniqueId } from 'lodash'
-import { useStore, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { addTodo } from "./actions";
 
 
@@ -39,20 +39,23 @@ function Page2 () {
   return (
     <div>
       <h1>useState</h1>
-      <span>You clicked {count} times</span>
-      <Button onClick={() => setCount(count + 1)}>Click me</Button>
+      <Space>
+        <span>You clicked {count} times</span>
+        <Button onClick={() => setCount(count + 1)}>Click me</Button>
+      </Space>
 
       <Divider />
 
       <h1>useState useEffect</h1>
-      <Input
-        placeholder="请输入"
-        style={{ width: 200 }}
-        value={inputValue}
-        onChange={(e) => change(e)}
-      />
-      <Button onClick={() => add()}>add</Button>
-
+      <Space>
+        <Input
+          placeholder="请输入"
+          style={{ width: 200 }}
+          value={inputValue}
+          onChange={(e) => change(e)}
+        />
+        <Button onClick={() => add()}>add</Button>
+      </Space>
       <ul>
         {list.map((item, index) => {
           return <li key={uniqueId("li_")}>{item}</li>;

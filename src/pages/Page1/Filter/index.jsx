@@ -1,11 +1,12 @@
 import React from "react";
 import { Form, Input, Select, Button } from "antd";
-import { useStore, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nameSpace } from "../reducer";
 import request from "../../../common/request";
-import { GET_LIST, GET_USER } from "../../../common/api";
+import { GET_LIST } from "../../../common/api";
 
 function Filter() {
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.Page1Reducers);
   const { searchParams } = state;
@@ -32,23 +33,33 @@ function Filter() {
   };
 
   const getList = (params) => {
-    request(GET_LIST, "POST", params).then((res) => {
-      const { data, success } = res;
-      if (success && data) {
-        dispatch({
-          type: `${nameSpace}/setList`,
-          payload: {
-            list: data.list,
-            column: data.column,
-            total: data.total,
-          },
-        });
-      } 
+    request(GET_LIST, "POST", Object.assign(searchParams, params)).then(
+      (res) => {
+        const { data, success } = res;
+        if (success && data) {
+          dispatch({
+            type: `${nameSpace}/setList`,
+            payload: {
+              list: data.list,
+              column: data.column,
+              total: data.total,
+            },
+          });
+        }
+      }
+    );
+  };
+
+  const reset = () => {
+    form.resetFields();
+    dispatch({
+      type: `${nameSpace}/resetList`,
     });
   };
 
   return (
     <Form
+      form={form}
       layout="inline"
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
@@ -71,6 +82,8 @@ function Filter() {
           查询
         </Button>
       </Form.Item>
+
+      <Button type="link" onClick={reset}>重置</Button>
     </Form>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useRef, useImperativeHandle, forwardRef } from "react";
-import { Input, Button } from 'antd'
+import { Space, Input, Button } from 'antd'
 
 // useImperativeHandle 应当与 forwardRef 一起使用：
 let FancyInput = (props, ref) => {
@@ -23,8 +23,10 @@ const Fancy = () => {
   return (
     <div>
       <h1>useImperativeHandle</h1>
-      <FancyInput ref={inputRef} />
-      <Button onClick={onButtonClick}>fancy input</Button>
+      <Space>
+        <FancyInput ref={inputRef} />
+        <Button onClick={onButtonClick}>fancy input</Button>
+      </Space>
     </div>
   );
 }

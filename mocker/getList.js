@@ -12,7 +12,7 @@ const db = Mock.mock({
       sex: "性别",
     },
     total: 22,
-    "list|22": [
+    "list|10": [
       {
         "id|+1": 1,
         name: "Emma",

@@ -1,5 +1,5 @@
 import React, { useContext} from 'react'
-import { Divider } from "antd";
+import { Divider, Button } from "antd";
 import Counter from "./Counter";
 import TextInputWithFocusButton from "./TextInputWithFocusButton";
 import FancyInput from "./FancyInput";
@@ -19,7 +19,7 @@ const ThemeContext = React.createContext();
 
 function App() {
   return (
-    <ThemeContext.Provider value={themes.light}>
+    <ThemeContext.Provider value={themes.dark}>
       
       <Toolbar />
       <Divider />
@@ -47,9 +47,9 @@ function Toolbar(props) {
 function ThemedButton() {
   const theme = useContext(ThemeContext);
   return (
-    <button style={{ background: theme.background, color: theme.foreground }}>
+    <Button style={{ background: theme.background, color: theme.foreground }}>
       I am styled by theme context!
-    </button>
+    </Button>
   );
 }
 

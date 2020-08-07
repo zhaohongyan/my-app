@@ -4,19 +4,23 @@ import {
   HeartTwoTone,
   CheckCircleTwoTone,
 } from "@ant-design/icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Space, Button } from "antd";
 import { Link } from 'react-router-dom'
-import { renderRoutes } from "react-router-config";
 
+import { nameSpace } from "./reducer";
 import Filter from './Filter';
 import CustomTable from '../../components/Table';
+import request from "../../common/request";
+import { GET_LIST } from "../../common/api";
 
 function Page1({ route }) {
-  const store = useSelector((state) => state.Page1Reducers);
-  const { list, column, total } = store;
+  const dispatch = useDispatch();
 
-  function getColumns() {
+  const store = useSelector((state) => state.Page1Reducers);
+  const { searchParams, list = [], column = {}, total } = store;
+
+  const getColumns = () => {
     const columns = Object.keys(column).map((key) => {
       return {
         title: column[key],
@@ -27,7 +31,37 @@ function Page1({ route }) {
     return columns;
   }
   console.log("page1 store", store);
-  console.log('route', route)
+
+  const pagination = {
+    current: searchParams.pageNo,
+    pageSize: searchParams.pageSize,
+    total: total
+  };
+
+  const handleTableChange = (pagination) => {
+    console.log("pagination", pagination);
+    const { current, pageSize } = pagination;
+    getList({ pageNo: current, pageSize });
+  }
+
+  const getList = (params) => {
+    request(GET_LIST, "POST", Object.assign(searchParams, params)).then(
+      (res) => {
+        const { data, success } = res;
+        if (success && data) {
+          dispatch({
+            type: `${nameSpace}/setList`,
+            payload: {
+              list: data.list,
+              column: data.column,
+              total: data.total,
+            },
+          });
+        }
+      }
+    );
+  };
+
   return (
     <div>
       <div style={{ marginBottom: 20, fontSize: 24 }}>
@@ -50,8 +84,9 @@ function Page1({ route }) {
       <CustomTable
         rowKey="id"
         columns={getColumns()}
-        total={total}
         dataSource={list}
+        onChange={handleTableChange}
+        pagination={pagination}
       />
     </div>
   );
