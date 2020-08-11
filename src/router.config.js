@@ -1,4 +1,4 @@
-// import Root from './App.js';
+import Root from "./App.js";
 import Page1 from "./pages/Page1";
 import Page1Edit from "./pages/Page1/Edit";
 import Page2 from "./pages/Page2";
@@ -7,6 +7,12 @@ import Page4 from "./pages/Page4";
 import Page5 from "./pages/Page5/index.tsx";
 
 export const routes = [
+  {
+    path: "/",
+    title: "Root",
+    exact: true,
+    component: Root,
+  },
   {
     path: "/page1",
     title: "Page1",

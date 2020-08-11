@@ -4,12 +4,13 @@
 3. model ✅
 4. mock ✅
 5. proxy ✅
+6. request ✅ 可以使用 async await 代替 generator函数(redux-saga)
 
 # 业务组件
 1. Filter ✅
 2. Table ✅
 
-# 支持ts
+# 支持ts ✅
 
 # 打包
 1. 更改包名 ✅
@@ -17,5 +18,9 @@
 
 # 启动静态服务器 ✅
 `yarn global add serve`
+
 `serve -s build`
 
+ # webpack
+ ###  loader
+ ### webpack-pluign

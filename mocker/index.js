@@ -1,4 +1,4 @@
-// 不可以使用es6
+// 不可以使用es module
 const fs = require('fs');
 const path = require('path');
 

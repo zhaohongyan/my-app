@@ -13,3 +13,5 @@ create-react-app脚手架搭建步骤
 * yarn add lodash
 
 * yarn add typescript @types/node @types/react @types/react-dom @types/jest
+
+redux-saga 非必需

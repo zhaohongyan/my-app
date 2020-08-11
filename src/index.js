@@ -21,24 +21,24 @@ import './index.css';
 const store = createStore(rootReducer);
 
 ReactDOM.render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <Router>
-      <div style={{ padding: "0 20px" }}>
-        <h1>Hello Emma!</h1>
-        <nav>
-          {firstRoutes.map((item) => (
-            <NavLink to={item.path}>{item.title}</NavLink>
-          ))}
-        </nav>
-        <Divider />
+  <React.StrictMode>
+    <Provider store={store}>
+      <Router>
+        <div style={{ padding: "0 20px" }}>
+          <h1>Hello Emma!</h1>
+          <nav>
+            {firstRoutes.map((item, index) => (
+              <NavLink key={index} to={item.path}>{item.title}</NavLink>
+            ))}
+          </nav>
+          <Divider />
 
-        {/* kick it all off with the root route */}
-        {renderRoutes(routes)}
-      </div>
-    </Router>
-  </Provider>,
-  // </React.StrictMode>,
+          {/* kick it all off with the root route */}
+          {renderRoutes(routes)}
+        </div>
+      </Router>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
