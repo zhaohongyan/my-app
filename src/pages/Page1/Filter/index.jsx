@@ -1,10 +1,11 @@
 import React from "react";
-import { Form, Input, Select, Button } from "antd";
+import { Form, Input, Select, Button, DatePicker } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { nameSpace } from "../reducer";
 import request from "../../../common/request";
 import { GET_LIST } from "../../../common/api";
 
+const { RangePicker } = DatePicker;
 function Filter() {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
@@ -93,13 +94,23 @@ function Filter() {
         </Select>
       </Form.Item>
 
+      <Form.Item name="field3">
+        <DatePicker />
+      </Form.Item>
+
+      <Form.Item name="field4">
+        <RangePicker />
+      </Form.Item>
+
       <Form.Item>
         <Button type="primary" htmlType="submit">
           查询
         </Button>
       </Form.Item>
 
-      <Button type="link" onClick={reset}>重置</Button>
+      <Button type="link" onClick={reset}>
+        重置
+      </Button>
     </Form>
   );
 }
