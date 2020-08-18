@@ -5,6 +5,7 @@ import Page2 from "./pages/Page2";
 import Page3 from "./pages/Page3";
 import Page4 from "./pages/Page4";
 import Page5 from "./pages/Page5/index.tsx";
+import Demo from "./pages/Demo";
 
 export const routes = [
   {
@@ -12,6 +13,11 @@ export const routes = [
     title: "Root",
     exact: true,
     component: Root,
+  },
+  {
+    path: "/demo",
+    title: "Demo",
+    component: Demo,
   },
   {
     path: "/page1",

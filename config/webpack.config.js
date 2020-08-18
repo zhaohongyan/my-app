@@ -384,8 +384,7 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
-                  ['import', { libraryName: 'antd', style: true }]
-                
+                  ["import", { libraryName: "antd", style: true }],
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -501,8 +500,8 @@ module.exports = function(webpackEnv) {
                   lessOptions: {
                     // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
                     modifyVars: {
-                      "primary-color": "#fc652f",
-                      "link-color": "#1DA57A",
+                      "primary-color": "#FC652F",
+                      "link-color": "#FC652F",
                       "border-radius-base": "2px",
                     },
                     javascriptEnabled: true,
