@@ -51,9 +51,9 @@ function Filter() {
   //   );
   // };
 
-  async function getList(params) {
+  const getList = async function(params) {
     const res = await request(GET_LIST, "POST", Object.assign(searchParams, params));
-    console.log('res', res);
+    console.log('res==', res);
     const { success, data } = res;
     if (success && data) {
       dispatch({

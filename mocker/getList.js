@@ -23,8 +23,20 @@ const db = Mock.mock({
   },
 });
 
+const dbErr = Mock.mock({
+  errCode: 0,
+  success: false,
+  message: "请求失败",
+  data: null
+});
+
 module.exports = {
   'POST /api/getList': (req, res) => {
-    return res.json(db)
+    // return res.status(200).json(db)
+    // return res.status(200).json(dbErr);
+    return res.status(403).json({
+      status: "error",
+      code: 403,
+    });
   }
 }

@@ -6,7 +6,7 @@ create-react-app脚手架搭建步骤
 
 * yarn eject
 * yarn add http-proxy-middleware
-* yarn add webpack-api-mocker 
+* yarn add mocker-api
 * yarn add antd
 * yarn add axios
 * yarn add mockjs
