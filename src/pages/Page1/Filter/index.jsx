@@ -33,25 +33,10 @@ function Filter() {
     });
   };
 
-  // const getList = (params) => {
-  //   request(GET_LIST, "POST", Object.assign(searchParams, params)).then(
-  //     (res) => {
-  //       const { data, success } = res;
-  //       if (success && data) {
-  //         dispatch({
-  //           type: `${nameSpace}/setList`,
-  //           payload: {
-  //             list: data.list,
-  //             column: data.column,
-  //             total: data.total,
-  //           },
-  //         });
-  //       }
-  //     }
-  //   );
-  // };
-
   const getList = async function(params) {
+    dispatch({
+      type: `${nameSpace}/setLoad`,
+    });
     const res = await request(GET_LIST, "POST", Object.assign(searchParams, params));
     console.log('res==', res);
     const { success, data } = res;
@@ -65,6 +50,9 @@ function Filter() {
         },
       });
     }
+    dispatch({
+      type: `${nameSpace}/hideLoad`,
+    });
   }
 
   const reset = () => {

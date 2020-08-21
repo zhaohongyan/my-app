@@ -5,7 +5,7 @@ import {
   CheckCircleTwoTone,
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { Space, Button } from "antd";
+import { Space, Button, Spin } from "antd";
 import { Link } from 'react-router-dom'
 
 import { nameSpace } from "./reducer";
@@ -18,7 +18,7 @@ function Page1({ route }) {
   const dispatch = useDispatch();
 
   const store = useSelector((state) => state.Page1Reducers);
-  const { searchParams, list = [], column = {}, total } = store;
+  const { searchParams, list = [], column = {}, total, loading } = store;
 
   const getColumns = () => {
     const columns = Object.keys(column).map((key) => {
@@ -64,30 +64,32 @@ function Page1({ route }) {
 
   return (
     <div>
-      <div style={{ marginBottom: 20, fontSize: 24 }}>
-        <SmileTwoTone style={{ marginRight: 10 }} />
-        <HeartTwoTone style={{ marginRight: 10 }} twoToneColor="#eb2f96" />
-        <CheckCircleTwoTone twoToneColor="#52c41a" />
-      </div>
+      <Spin spinning={loading}>
+        <div style={{ marginBottom: 20, fontSize: 24 }}>
+          <SmileTwoTone style={{ marginRight: 10 }} />
+          <HeartTwoTone style={{ marginRight: 10 }} twoToneColor="#eb2f96" />
+          <CheckCircleTwoTone twoToneColor="#52c41a" />
+        </div>
 
-      <Space style={{ marginBottom: 16 }}>
-        <Link to="/page1/add">
-          <Button>新增</Button>
-        </Link>
-        <Link to="/page1/edit/1">
-          <Button>编辑</Button>
-        </Link>
-      </Space>
+        <Space style={{ marginBottom: 16 }}>
+          <Link to="/page1/add">
+            <Button>新增</Button>
+          </Link>
+          <Link to="/page1/edit/1">
+            <Button>编辑</Button>
+          </Link>
+        </Space>
 
-      <Filter />
-      
-      <CustomTable
-        rowKey="id"
-        columns={getColumns()}
-        dataSource={list}
-        onChange={handleTableChange}
-        pagination={pagination}
-      />
+        <Filter />
+
+        <CustomTable
+          rowKey="id"
+          columns={getColumns()}
+          dataSource={list}
+          onChange={handleTableChange}
+          pagination={pagination}
+        />
+      </Spin>
     </div>
   );
 }

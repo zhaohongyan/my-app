@@ -14,6 +14,7 @@ const initialState = {
   list: [],
   total: 0,
   column: {},
+  loading: false
 };
 
 export default function (state = initialState, action) {
@@ -29,22 +30,6 @@ export default function (state = initialState, action) {
         ),
       };
 
-    // case `${nameSpace}/getList`:
-    //   let responseData = {};
-    //   request(GET_LIST, "POST", state.searchParams).then((res) => {
-    //     const { data, success } = res;
-    //     if (success && data) {
-    //       responseData = data;
-    //     }
-    //   });
-    //   const { column, list, total } = responseData;
-    //   return {
-    //     ...state,
-    //     list,
-    //     column,
-    //     total,
-    //   };
-
     case `${nameSpace}/setList`:
       const { column, list, total } = action.payload;
       return {
@@ -56,6 +41,12 @@ export default function (state = initialState, action) {
 
     case `${nameSpace}/resetList`:
       return initialState;
+
+    case `${nameSpace}/setLoad`:
+      return { ...state, loading: true };
+
+    case `${nameSpace}/hideLoad`:
+      return { ...state, loading: false };
 
     default:
       return initialState;
