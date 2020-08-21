@@ -8,7 +8,7 @@ const ignoredFiles = require('react-dev-utils/ignoredFiles');
 const redirectServedPath = require('react-dev-utils/redirectServedPathMiddleware');
 const paths = require('./paths');
 const getHttpsConfig = require('./getHttpsConfig');
-const apiMocker = require("webpack-api-mocker");
+const apiMocker = require("mocker-api");
 const path = require("path");
 
 const host = process.env.HOST || '0.0.0.0';
