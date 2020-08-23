@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  SmileTwoTone,
-  HeartTwoTone,
-  CheckCircleTwoTone,
-} from "@ant-design/icons";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Space, Button, Spin } from "antd";
 import { Link } from 'react-router-dom'
@@ -65,12 +61,6 @@ function Page1({ route }) {
   return (
     <div>
       <Spin spinning={loading}>
-        <div style={{ marginBottom: 20, fontSize: 24 }}>
-          <SmileTwoTone style={{ marginRight: 10 }} />
-          <HeartTwoTone style={{ marginRight: 10 }} twoToneColor="#eb2f96" />
-          <CheckCircleTwoTone twoToneColor="#52c41a" />
-        </div>
-
         <Space style={{ marginBottom: 16 }}>
           <Link to="/page1/add">
             <Button>新增</Button>
