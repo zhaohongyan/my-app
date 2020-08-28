@@ -2,8 +2,8 @@ import React from "react";
 import { Form, Input, Select, Button, DatePicker } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { nameSpace } from "../reducer";
-import request from "../../../common/request";
-import { GET_LIST } from "../../../common/api";
+import request from "common/request";
+import { GET_LIST } from "common/api";
 
 const { RangePicker } = DatePicker;
 function Filter() {

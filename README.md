@@ -9,7 +9,7 @@
 6. request ✅ 可以使用 async await 代替 generator函数(redux-saga)
 7. request 错误处理 ✅
 8. loading  ✅
-9. webpack alias
+9. webpack alias ✅
 
 ### 业务组件
 1. Filter ✅

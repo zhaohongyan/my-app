@@ -10,7 +10,7 @@ const { Header, Footer, Sider, Content } = Layout;
 const Frame = () => { 
 
   return (
-    <Layout>
+    <Layout style={{ height: '100%' }}>
       <Sider>
         <CommonSider />
       </Sider>

@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { ConfigProvider } from 'antd';
 import { BrowserRouter as Router, NavLink } from "react-router-dom";
 // import { renderRoutes } from "react-router-config";
-
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
 
@@ -14,7 +13,15 @@ import rootReducer from "./reducers";
 
 import Frame from './components/Layout/Frame/index';
 
+import enUS from 'antd/es/locale/en_US';
+import zhCN from 'antd/es/locale/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+
 import './index.css';
+
+// moment.locale('en');
+moment.locale('zh-cn'); // 中文
 
 const store = createStore(rootReducer);
 
@@ -22,7 +29,9 @@ ReactDOM.render(
   // <React.StrictMode>
     <Provider store={store}>
       <Router>
+      <ConfigProvider locale={zhCN}>
         <Frame />
+        </ConfigProvider>
       </Router>
     </Provider>,
   // </React.StrictMode>,
