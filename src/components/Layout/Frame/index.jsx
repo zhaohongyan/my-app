@@ -8,7 +8,6 @@ import { flattenRoutes } from '../../../router.config'; // 所有路由
 const { Header, Footer, Sider, Content } = Layout;
 
 const Frame = () => { 
-
   return (
     <Layout style={{ height: '100%' }}>
       <Sider>

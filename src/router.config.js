@@ -1,8 +1,7 @@
 import React from 'react'
 import Root from "./App.js";
 import {
-  AppstoreOutlined,
-  MailOutlined,
+  HomeOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
 
@@ -11,13 +10,13 @@ import NotAuth from './pages/common/Page403';
 import NotFound from './pages/common/Page404';
 import Error from './pages/common/Page500';
 
+import Home from "./pages/Demo";
 import Page1 from "./pages/Page1";
 import Page1Edit from "./pages/Page1/Edit";
 import Page2 from "./pages/Page2";
 import Page3 from "./pages/Page3";
 import Page4 from "./pages/Page4";
 import Page5 from "./pages/Page5/index.tsx";
-import Demo from "./pages/Demo";
 
 /**
  * 路由规则 菜单展开需要
@@ -54,13 +53,13 @@ export const routes = [
   //   component: Root,
   // },
   {
-    icon: <AppstoreOutlined />,
-    path: "/demo",
-    title: "Demo",
-    component: Demo,
+    icon: <HomeOutlined />,
+    path: "/home",
+    title: "Home",
+    component: Home,
   },
   {
-    icon: <MailOutlined />,
+    icon: <SettingOutlined />,
     path: "/page1",
     title: "Page1",
     // component: Page1,
@@ -78,6 +77,7 @@ export const routes = [
       {
         path: "/page1/edit/:id",
         title: "Page1Edit",
+        hideSiderPath: true,
         component: Page1Edit,
       },
     ],

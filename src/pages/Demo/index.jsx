@@ -16,6 +16,7 @@ import {
   Divider,
   Space,
 } from "antd";
+import { Link } from 'react-router-dom'
 import Avatar from './Upload';
 
 function Demo() {
@@ -54,6 +55,7 @@ function Demo() {
 
   return (
     <div>
+      <Link to="page1/list">page1</Link>
       <Divider>Button Input InputNumber</Divider>
       <Space size="middle">
         <Button>Button</Button>

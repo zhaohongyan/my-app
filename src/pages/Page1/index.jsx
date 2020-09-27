@@ -2,8 +2,8 @@ import React from 'react'
 
 import { useDispatch, useSelector } from "react-redux";
 import { Space, Button, Spin } from "antd";
-import { Link } from 'react-router-dom'
-import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 import { nameSpace } from "./reducer";
 import Filter from './Filter';
@@ -86,6 +86,9 @@ function Page1({ route }) {
         <Space style={{ marginBottom: 16 }}>
           <Link to="/page1/add">
             <Button>新增</Button>
+          </Link>
+          <Link to="/page2">
+            <Button>to Page2</Button>
           </Link>
         </Space>
 

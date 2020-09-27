@@ -6,10 +6,12 @@
 3. model ✅
 4. mock ✅
 5. proxy ✅
-6. request ✅ 可以使用 async await 代替 generator函数(redux-saga)
+6. request ✅ 
 7. request 错误处理 ✅
 8. loading  ✅
+  - redux-saga 可以脱离业务，更好的控制loading **todo**
 9. webpack alias ✅
+
 
 ### 业务组件
 1. Filter ✅
