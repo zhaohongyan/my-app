@@ -28,6 +28,7 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
+const theme = require('./theme');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -501,11 +502,7 @@ module.exports = function(webpackEnv) {
                 {
                   lessOptions: {
                     // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
-                    modifyVars: {
-                      "primary-color": "#FC652F",
-                      "link-color": "#FC652F",
-                      "border-radius-base": "2px",
-                    },
+                    modifyVars: theme,
                     javascriptEnabled: true,
                   },
                 }
