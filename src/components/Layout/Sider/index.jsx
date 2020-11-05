@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu } from "antd";
 import { includes } from 'lodash';
-import { routes } from '../../../router.config'
+import { routes, flattenRoutes } from '../../../router.config'
 import { useHistory } from 'react-router'
 
 const { SubMenu } = Menu;
@@ -16,6 +16,16 @@ const CommonSider = () => {
   const [openKeys, handleOpenKey] = useState([`/${location.pathname.split('/')[1]}`]);
   // console.log('selectedKeys', selectedKeys);
   // console.log('openKeys', openKeys);
+  let ismatch = false;
+  for (const item of Object.values(flattenRoutes)) {
+    if (item.path === location.pathname) {
+      ismatch = true;
+      break;
+    }
+  }
+  if (!ismatch) {
+    history.push('/not_found')
+  }
 
   history.listen(location => {
     // console.log('listen', location.pathname)

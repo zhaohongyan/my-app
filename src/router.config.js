@@ -10,6 +10,7 @@ import NotAuth from './pages/common/Page403';
 import NotFound from './pages/common/Page404';
 import Error from './pages/common/Page500';
 
+// 业务页面
 import Home from "./pages/Demo";
 import Page1 from "./pages/Page1";
 import Page1Edit from "./pages/Page1/Edit";
@@ -18,28 +19,25 @@ import Page3 from "./pages/Page3";
 import Page4 from "./pages/Page4";
 import Page5 from "./pages/Page5/index.tsx";
 
-/**
- * 路由规则 菜单展开需要
- * 子路由的路径一定要以父路由的路径开头
- * 如： '/page1'  ’/page1/add‘ 
- */
-
 const commonRoutes = [
   {
     path: "/not_auth",
     title: "NotAuth",
+    hideSiderPath: true,
     exact: true,
     component: NotAuth,
   },
   {
     path: "/not_found",
     title: "NotFound",
+    hideSiderPath: true,
     exact: true,
     component: NotFound,
   },
   {
     path: "/error",
     title: "Error",
+    hideSiderPath: true,
     exact: true,
     component: Error,
   },

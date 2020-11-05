@@ -4,6 +4,7 @@ import { message } from 'antd';
 const httpStatus = {
   401: (error) => {
     message.info("未登录");
+    window.location.hash = '#/not_auth';
   },
   403: () => {
     message.info("权限错误");
@@ -67,7 +68,7 @@ function request (url, method, data) {
       // }
       console.log(error);
       errorHandle(error)
-      return { success: false };
+      return { success: false }; // 业务页面统一根据success来判断接口是否成功
     });
 }
 

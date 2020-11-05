@@ -3,14 +3,16 @@
 ### 公共
 1. router ✅
 2. antd && theme ✅
-3. model ✅
+3. store && reducer ✅
 4. mock ✅
 5. proxy ✅
 6. request ✅ 
-7. request 错误处理 ✅
-8. loading  ✅
+  - request 错误处理, 401、500 跳转 ✅
+
+7. loading  ✅
   - redux-saga 可以脱离业务，更好的控制loading **todo**
-9. webpack alias ✅
+8. webpack alias ✅
+9. Menu渲染 (selectedKeys, openKeys), 不匹配时跳转404
 
 
 ### 业务组件
@@ -26,8 +28,8 @@ https://www.html.cn/create-react-app/docs/adding-typescript/
 - config/paths.js 更改 appBuild
 
 ### 启动静态服务器
-```
-yarn global add serve
+```js
+yarn global add serve // 全局如果安装过，则跳过
 serve -s build
 ```
 ### webpack
