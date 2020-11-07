@@ -17,7 +17,7 @@ import Page1Edit from "./pages/Page1/Edit";
 import Page2 from "./pages/Page2";
 import Page3 from "./pages/Page3";
 import Page4 from "./pages/Page4";
-import Page5 from "./pages/Page5/index.tsx";
+import Page5 from "./pages/Page5";
 
 const commonRoutes = [
   {
