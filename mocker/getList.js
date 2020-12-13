@@ -44,8 +44,8 @@ const Err500 = {
 
 module.exports = {
   'POST /api/getList': (req, res) => {
-    // return res.status(200).json(db)
+    return res.status(200).json(db)
     // return res.status(200).json(dbErr);
-    return res.status(401).json(Err401);
+    // return res.status(401).json(Err401);
   }
 }
