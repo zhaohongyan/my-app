@@ -139,7 +139,8 @@ checkBrowsers(paths.appPath, isInteractive)
       }
 
       console.log(chalk.cyan('Starting the development server...\n'));
-      openBrowser(urls.localUrlForBrowser);
+      // openBrowser(urls.localUrlForBrowser);
+      openBrowser('http://localhost:3000/#/home');
     });
 
     ['SIGINT', 'SIGTERM'].forEach(function(sig) {

@@ -1,7 +1,6 @@
-/* eslint-disable */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Menu } from "antd";
-import { includes } from 'lodash';
+import { matchRoutes } from "react-router-config";
 import { routes, flattenRoutes } from '../../../router.config'
 import { useHistory } from 'react-router'
 
@@ -12,34 +11,61 @@ const CommonSider = () => {
   // console.log('his', history);
   const { location } = history;
 
-  const [selectedKeys, handleSelectKey] = useState([location.pathname]);
-  const [openKeys, handleOpenKey] = useState([`/${location.pathname.split('/')[1]}`]);
+  const [selectedKeys, setSelectKey] = useState([]);
+  const [openKeys, setOpenKey] = useState([]);
   // console.log('selectedKeys', selectedKeys);
   // console.log('openKeys', openKeys);
-  let ismatch = false;
-  for (const item of Object.values(flattenRoutes)) {
-    if (item.path === location.pathname) {
-      ismatch = true;
-      break;
+
+  // console.log('flattenRoutes', flattenRoutes);
+  // console.log('location.pathname', location.pathname);
+  // console.log('matchRoutes', matchRoutes(flattenRoutes, location.pathname))
+
+  const setKey = useCallback((pathname) => {
+    const branch = matchRoutes(flattenRoutes, pathname)
+    if (branch && branch.length > 0) {
+      if (branch[0].route.hideSiderPath) {
+        handleSelectKey(branch[0].route.hideSiderPath)
+      } else {
+        handleSelectKey(branch[0].route.path)
+      }
+
+      if (branch[0].route.parentPath) {
+        handleOpenKey(branch[0].route.parentPath)
+      } else {
+        handleOpenKey([branch[0].route.path])
+      }
+    } else {
+      history.push('/not_found')
     }
-  }
-  if (!ismatch) {
-    history.push('/not_found')
+  }, [history])
+
+
+  const handleSelectKey = key => {
+    setSelectKey([key])
   }
 
-  history.listen(location => {
-    // console.log('listen', location.pathname)
-    handleSelectKey([location.pathname]);
-    handleOpenKey([`/${location.pathname.split('/')[1]}`])
-  });
- 
+  const handleOpenKey = keyList => {
+    setOpenKey(keyList)
+  }
+
+  useEffect(() => {
+    setKey(location.pathname);
+  }, [location.pathname, setKey])
+
+  //核心是再这里监听路由变化高亮对应的菜单
+  useEffect(() => {
+    history.listen((location) => {
+      setKey(location.pathname);
+    });
+  }, [history, setKey]);
+
   /**
    * 规则：
    * 最后一层的父级 SubMenu
    * 最后一层 Menu.Item
    */
   const renderMenus = (routes) => {
-    return routes.map(item => {
+    return routes.map(item => { // eslint-disable-line
       if (item.routes && item.routes.length > 0) {
         return (
           <SubMenu
@@ -60,11 +86,11 @@ const CommonSider = () => {
   }
 
   const handleOpen = (openKeys) => {
-    handleOpenKey(openKeys);
+    setOpenKey(openKeys);
   }
 
   const handleSelect = ({ selectedKeys }) => {
-    handleSelectKey(selectedKeys)
+    setSelectKey(selectedKeys)
   }
 
   const handleMenuItem = ({ key }) => {

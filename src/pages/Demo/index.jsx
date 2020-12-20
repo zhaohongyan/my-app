@@ -55,7 +55,7 @@ function Demo() {
 
   return (
     <div>
-      <Link to="page1/list">page1</Link>
+      <Link to="page1/list"><Button type="primary">to page1 list</Button></Link>
       <Divider>Button Input InputNumber</Divider>
       <Space size="middle">
         <Button>Button</Button>

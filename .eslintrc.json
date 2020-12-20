@@ -1,0 +1,48 @@
+{
+  "root": true,
+  // "parser": "babel-eslint",
+  "extends": "react-app",
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "$": true,
+    "_": true
+  }
+  // "rules": {
+  //   "comma-dangle": [
+  //     2,
+  //     "only-multiline"
+  //   ],
+  //   "no-plusplus": 0,
+  //   "no-mixed-operators": 0,
+  //   "no-param-reassign": 0,
+  //   "no-else-return": 0,
+  //   "guard-for-in": 0,
+  //   "no-restricted-syntax": 0,
+  //   "linebreak-style": 0,
+  //   "no-underscore-dangle": 0,
+  //   "react/forbid-prop-types": [
+  //     1,
+  //     {
+  //       "forbid": [
+  //         "any"
+  //       ]
+  //     }
+  //   ],
+  //   "react/jsx-one-expression-per-line": 0,
+  //   "import/no-named-as-default": 0,
+  //   "import/no-named-as-default-member": 0,
+  //   "import/no-unresolved": 0,
+  //   "import/prefer-default-export": 0,
+  //   "jsx-a11y/label-has-associated-control": 0,
+  //   "jsx-a11y/anchor-is-valid": 0,
+  //   "jsx-a11y/click-events-have-key-events": 0,
+  //   "jsx-a11y/no-noninteractive-tabindex": 0,
+  //   "jsx-a11y/no-static-element-interactions": 0,
+  //   "jsx-a11y/label-has-for": 0,
+  //   "eqeqeq": 0,
+  //   "no-lonely-if": 0,
+  //   "max-len": 0
+  // }
+}

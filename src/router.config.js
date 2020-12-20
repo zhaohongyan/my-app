@@ -63,19 +63,23 @@ export const routes = [
     // component: Page1,
     routes: [
       {
+        parentPath: ["/page1"],
         path: "/page1/list",
         title: "Page1List",
         component: Page1,
       },
       {
+        parentPath: ["/page1"],
+        hideSiderPath: "/page1/list",
         path: "/page1/add",
         title: "Page1Add",
         component: Page1Edit,
       },
       {
+        parentPath: ["/page1"],
+        hideSiderPath: "/page1/list",
         path: "/page1/edit/:id",
         title: "Page1Edit",
-        hideSiderPath: true,
         component: Page1Edit,
       },
     ],

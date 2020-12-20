@@ -16,7 +16,10 @@ const tailLayout = {
   },
 };
 
-function Page1Edit () {
+function Page1Edit({ match }) {
+  const { params } = match;
+  const { id } = params;
+
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -29,11 +32,11 @@ function Page1Edit () {
     <Form
       {...layout}
       name="basic"
-      initialValues={{
+      initialValues={id ? {
         username: 'Emma',
         password: '123456',
         remember: false,
-      }}
+      } : {}}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       style={{ width: 800, margin: 'auto' }}

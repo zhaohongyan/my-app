@@ -85,7 +85,7 @@ function Page1({ route }) {
       <Spin spinning={loading}>
         <Space style={{ marginBottom: 16 }}>
           <Link to="/page1/add">
-            <Button>新增</Button>
+            <Button type="primary">新增</Button>
           </Link>
           <Link to="/page2">
             <Button>to Page2</Button>
