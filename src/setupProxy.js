@@ -1,6 +1,6 @@
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
-const target = "http://www.example.org";
+const target = "http://localhost:3000";
 
 module.exports = app => {
   app.use(

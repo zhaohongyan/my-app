@@ -25,13 +25,13 @@ const store = createStore(rootReducer);
 
 ReactDOM.render(
   // <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <ConfigProvider locale={zhCN}>
-          <Frame />
-        </ConfigProvider>
-      </Router>
-    </Provider>,
+  <Provider store={store}>
+    <Router>
+      <ConfigProvider locale={zhCN}>
+        <Frame />
+      </ConfigProvider>
+    </Router>
+  </Provider>,
   // </React.StrictMode>,
   document.getElementById("root")
 );
