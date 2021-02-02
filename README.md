@@ -45,3 +45,7 @@ serve -s build
 
 1. loader
 2. pluign
+
+github.com Personal access tokens 的使用
+
+`git remote set-url origin https://54079954ff87c11ea2582f91cf14ca39e5323e58@github.com/zhaohongyan/my-app.git `
