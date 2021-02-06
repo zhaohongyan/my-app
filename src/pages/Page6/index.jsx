@@ -48,7 +48,7 @@ function Page6(params) {
               <li key={uniqueId()}>
                 <Row type="flex" style={{ justifyContent: 'space-between' }}>
                   <Col>
-                    <div><Link to={`/page6/detail/${item.id}`}>{item.title}</Link></div>
+                    <div>id: {item.id} <Link to={`/page6/detail/${item.id}`}>{item.title}</Link></div>
                     <div>{item.content}</div>
                     <div>{item.author} {moment(item.createTime).format('YYYY-MM-DD')}</div>
                   </Col>
