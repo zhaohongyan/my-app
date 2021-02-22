@@ -1,5 +1,3 @@
-import { GET_LIST2, GET_LIST3 } from '../../src/common/api'
-
 const Mock = require("mockjs");
 
 const db = Mock.mock({
@@ -25,15 +23,7 @@ const db = Mock.mock({
   },
 });
 
-// GET_LIST2, GET_LIST3 
-const getList2 = 'POST ' + GET_LIST2;
-const getList3 = 'POST ' + GET_LIST3;
-
 module.exports = {
-  [getList2]: (req, res) => {
-    return res.status(200).json(db)
-  },
-  [getList3]: (req, res) => {
-    return res.status(200).json(db)
-  }
+  list2: db,
+  list3: db
 }
