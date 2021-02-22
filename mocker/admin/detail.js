@@ -1,3 +1,5 @@
+import { GET_DETAIL } from '../../src/common/api'
+
 const detail1 = {
   errCode: 0,
   success: true,
@@ -22,8 +24,10 @@ const detail2 = {
   },
 }
 
+const getDetail = 'GET ' + GET_DETAIL;
+
 module.exports = {
-  'GET /api/getDetail': (req, res) => {
+  [getDetail]: (req, res) => {
     console.log(req.query);
     if (req.query.id === '1') {
       return res.status(200).json(detail2)

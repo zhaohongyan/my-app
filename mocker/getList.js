@@ -1,3 +1,5 @@
+import { GET_LIST } from '../../src/common/api'
+
 const Mock = require("mockjs");
 
 const db = Mock.mock({
@@ -41,9 +43,10 @@ const Err500 = {
   code: 500,
 };
 
+const getList = 'POST ' + GET_LIST;
 
 module.exports = {
-  'POST /api/getList': (req, res) => {
+  [getList]: (req, res) => {
     return res.status(200).json(db)
     // return res.status(200).json(dbErr);
     // return res.status(401).json(Err401);
