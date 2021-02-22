@@ -14,6 +14,7 @@ const initialState = {
   list: [],
   total: 0,
   column: {},
+  detail: {},
   loading: false
 };
 
@@ -47,6 +48,9 @@ export default function (state = initialState, action) {
 
     case `${nameSpace}/hideLoad`:
       return { ...state, loading: false };
+
+    case `${nameSpace}/setData`:
+      return { ...state, ...action.payload };
 
     default:
       return initialState;

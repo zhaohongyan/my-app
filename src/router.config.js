@@ -15,6 +15,7 @@ import Login from './pages/Login'
 import Home from "./pages/Demo";
 import Page1 from "./pages/Page1";
 import Page1Edit from "./pages/Page1/Edit";
+import Page1Detail from './pages/Page1/Detail'
 import Page2 from "./pages/Page2";
 import Page3 from "./pages/Page3";
 import Page4 from "./pages/Page4";
@@ -23,6 +24,8 @@ import Page6 from "./pages/Page6";
 import Page6Edit from './pages/Page6/edit';
 import Page6Detail from './pages/Page6/detail'
 
+// demo
+import ReactDemo from './pages/ReactDemo'
 
 const commonRoutes = [
   {
@@ -55,6 +58,12 @@ export const routes = [
   //   exact: true,
   //   component: Root,
   // },
+  {
+    icon: <HomeOutlined />,
+    path: "/demo",
+    title: "DEMO",
+    component: ReactDemo,
+  },
   {
     icon: <HomeOutlined />,
     path: "/login",
@@ -92,6 +101,13 @@ export const routes = [
         path: "/page1/edit/:id",
         title: "Page1Edit",
         component: Page1Edit,
+      },
+      {
+        parentPath: ["/page1"],
+        hideSiderPath: "/page1/list",
+        path: "/page1/detail/:id",
+        title: "Page1Detail",
+        component: Page1Detail,
       },
     ],
   },

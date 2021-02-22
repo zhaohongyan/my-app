@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useEffect, useCallback } from 'react'
 
 import { useDispatch, useSelector } from "react-redux";
 import { Space, Button, Spin } from "antd";
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
+import request from "common/request";
+import { GET_LIST, GET_LIST2, GET_LIST3 } from "common/api";
+
 import { nameSpace } from "./reducer";
 import Filter from './Filter';
 import CustomTable from '../../components/Table';
-import request from "../../common/request";
-import { GET_LIST } from "../../common/api";
+
 
 function Page1({ route }) {
   const dispatch = useDispatch();
@@ -26,6 +28,16 @@ function Page1({ route }) {
     let columns = [];
     if (Object.keys(column).length > 0) {
       columns = Object.keys(column).map((key) => {
+        if (key === 'id') {
+          return {
+            title: column[key],
+            dataIndex: key,
+            key: key,
+            render: (txt, record) => {
+              return <Link to={`/page1/detail/${record.id}`}>{txt}</Link>
+            }
+          };
+        }
         return {
           title: column[key],
           dataIndex: key,
@@ -62,8 +74,8 @@ function Page1({ route }) {
     getList({ pageNo: current, pageSize });
   }
 
-  const getList = (params) => {
-    request(GET_LIST, "POST", Object.assign(searchParams, params)).then(
+  const getList = useCallback((params) => {
+    request(GET_LIST2, "POST", Object.assign(searchParams, params)).then(
       (res) => {
         const { data, success } = res;
         if (success && data) {
@@ -78,7 +90,13 @@ function Page1({ route }) {
         }
       }
     );
-  };
+    request(GET_LIST3, "POST");
+  }, [dispatch, searchParams]);
+
+
+  useEffect(() => {
+    getList();
+  }, [getList])
 
   return (
     <div>
