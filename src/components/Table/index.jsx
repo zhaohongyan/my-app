@@ -1,16 +1,26 @@
 import React from 'react';
-import { Table } from "antd";
+import { Table, Pagination } from "antd";
 
 
-function CustomTable({ columns, dataSource, ...others }) {
+function CustomTable({ columns, dataSource, pagination, ...others }) {
+  const itemRender = (current, type, originalElement) => {
+    if (type === 'prev') {
+      return <a>上一页</a>;
+    }
+    if (type === 'next') {
+      return <a>下一页</a>;
+    }
+    return originalElement;
+  }
+
   return (
     <div>
       <Table
         columns={columns}
-        pagination={{ position: ["bottomRight"] }}
         dataSource={dataSource}
         {...others}
       />
+      <Pagination itemRender={itemRender} {...pagination} />
     </div>
   );
 }

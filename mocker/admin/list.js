@@ -1,4 +1,9 @@
 const Mock = require("mockjs");
+const API = require('../../src/common/api');
+
+const getList = 'POST ' + API.GET_LIST;
+const getList2 = 'POST ' + API.GET_LIST2;
+const getList3 = 'POST ' + API.GET_LIST3;
 
 const db = Mock.mock({
   errCode: 0,
@@ -24,6 +29,13 @@ const db = Mock.mock({
 });
 
 module.exports = {
-  list2: db,
-  list3: db
+  [getList]: (req, res) => {
+    return res.status(200).json(db)
+  },
+  [getList2]: (req, res) => {
+    return res.status(200).json(db)
+  },
+  [getList3]: (req, res) => {
+    return res.status(200).json(db)
+  },
 }

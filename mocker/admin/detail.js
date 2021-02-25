@@ -1,3 +1,7 @@
+const API = require('../../src/common/api')
+
+const getDetail = 'GET ' + API.GET_DETAIL;
+
 const detail1 = {
   errCode: 0,
   success: true,
@@ -23,6 +27,11 @@ const detail2 = {
 }
 
 module.exports = {
-  detail1,
-  detail2
+  [getDetail]: (req, res) => {
+    if (req.query.id === '1') {
+      return res.status(200).json(detail2)
+    } else {
+      return res.status(200).json(detail1)
+    }
+  },
 }

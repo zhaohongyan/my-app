@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Space, Input, Button, Divider } from "antd";
+import { Space, Input, Button, Divider, message } from "antd";
 import { uniqueId } from 'lodash'
 import { useDispatch, useSelector } from "react-redux";
 // import { addTodo } from "./actions";
 
 
-function Page2 () {
+function Page2() {
   const dispatch = useDispatch();
 
   // state 有两个变量
@@ -14,7 +14,7 @@ function Page2 () {
 
   const change = (e) => {
     changeInput(e.target.value);
-  }  
+  }
 
   // 只有inputvalue改变的时候才会执行
   useEffect(() => {
@@ -22,13 +22,17 @@ function Page2 () {
   }, [inputValue]);
 
   const add = () => {
-    dispatch({ 
-      type: 'addTodo', 
-      payload: inputValue 
+    if (!inputValue) {
+      message.error('请输入内容')
+      return
+    }
+    dispatch({
+      type: 'addTodo',
+      payload: inputValue
     })
     changeInput("");
   }
-  
+
   const store = useSelector((state) => state.Page2Reducers);
   const list = store.list;
 
@@ -63,7 +67,7 @@ function Page2 () {
       </ul>
     </div>
   );
-  
+
 }
 
 export default Page2;
